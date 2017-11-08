@@ -9,10 +9,17 @@
        function twitchController ($scope, twitchFactory){
            
        const vm = this;
-        vm.message = "Loading..."
-         const channelList = ['castro_1021', 'freecodecamp', 'brunofin', 'ESL_SC2', 
-                              'monstercat', 'mariokart8', 'extralife4kids', 'misterrogers', 
-                              'thischanneldoesnotexist', 'comster404'];
+        // vm.message = "Loading..."
+       
+       vm.statusArray = [
+        {name: 'All', value: ''},
+        {name: 'Online', value: 'Online'},
+        {name: 'Offline', value: 'Offline'}
+            ];
+
+       const channelList = ['castro_1021', 'freecodecamp', 'brunofin', 'ESL_SC2', 
+                            'monstercat', 'mariokart8', 'extralife4kids', 'misterrogers', 
+                            'thischanneldoesnotexist', 'comster404'];
           
           vm.channelInfoArray = [];
 

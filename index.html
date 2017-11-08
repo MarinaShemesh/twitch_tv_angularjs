@@ -5,12 +5,30 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   <title>Twitch TV</title>
 </head>
-<body ng-controller = "TwitchController as vm">
+<body ng-controller = "twitchController as vm">
 <h1>Twitch TV - Angular app</h1>
 <div>
   {{vm.message}}
  
-  <div ng-repeat="foo in vm.channelInfoArray[0]">
+  <div ng-repeat="channel in vm.channelInfoArray">
+    <div ng-if="channel.url === undefined">
+      {{channel.name}} - {{channel.status}}
+    </div>
+      <div ng-if='channel.url !== undefined'>     
+      <span>
+        <a href='{{channel.url}}'>{{channel.name}} - </a>
+      </span>
+
+      <span>
+        <a href='{{channel.url}}' target='_blank'>
+          <img src='{{channel.logo}}' width='50' height='50'>
+        </a>
+      </span>
+      <span>
+         - {{channel.status}} - {{channel.game}} - {{channel.gameStatus}}
+      </span>
+    </div>
+
   
   </div>
 </div>

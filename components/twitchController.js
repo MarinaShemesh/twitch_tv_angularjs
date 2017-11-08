@@ -2,23 +2,52 @@
      'use strict';
 
       angular.module('twitchApp')
-          .controller('TwitchController', TwitchController);
+          .controller('twitchController', twitchController);
 
     
-     TwitchController.$inject = ['$scope', 'twitchFactory'];
-       function TwitchController ($scope, twitchFactory){
+     twitchController.$inject = ['$scope', 'twitchFactory'];
+       function twitchController ($scope, twitchFactory){
            
        const vm = this;
         vm.message = "Loading..."
-         const channelList = ['castro_1021', 'freecodecamp', 'ESL_SC2', 'monstercat'];
+         const channelList = ['castro_1021', 'freecodecamp', 'brunofin', 'ESL_SC2', 
+                              'monstercat', 'mariokart8', 'extralife4kids', 'misterrogers', 
+                              'thischanneldoesnotexist', 'comster404'];
           
-          angular.forEach(channelList, function(channel){
-           twitchFactory.getChannelInfo()//info from factory
+          vm.channelInfoArray = [];
+
+          angular.forEach(channelList, function (channel){
+           const channelInfo = {
+            name:channel,
+            status:'Offline'
+           };
+
+           twitchFactory.getChannelInfo(channel)//info from factory
             .then(function (data){
-             console.log(data);
+             console.log('controllerData:', data);
+             
+              if(data.stream === undefined){
+              channelInfo.status = 'Account Closed';
+             }
+
+              else if(data.stream !== null){
+              channelInfo.status = 'Online';
+              channelInfo.logo = data.stream.channel.logo;
+              channelInfo.url = data.stream.channel.url;
+              channelInfo.game = data.stream.game;
+              channelInfo.gameStatus = data.stream.channel.status;
+             }
+             
+             else {
+              
+             }
+             vm.channelInfoArray.push(channelInfo);
+        
               });
 
           }); //end of forEach
+
+           // vm.twitchController();
           
         }//end of controller
  

@@ -10,7 +10,7 @@
          return {
 
            getChannelInfo: function(channel){
-             const clientID = 'c8a3wkkb56yqjhlcui7tcfyjvs65dy6';
+             const clientID = 'get your client ID from twitchTV';
              const twitchURL = 'https://api.twitch.tv/kraken/streams/';
              const channelURL = twitchURL + channel + '?client_id=' + clientID;
              const deferred = $q.defer();
@@ -19,12 +19,15 @@
                 url: channelURL
               })
               .then(function(data){
-                deferred.resolve(data);
+                deferred.resolve(data.data);
+                console.log('data:', data);
+                console.log('data.data:', data.data);
               })
               .catch(function(){
                 deferred.reject("An error occured while fetching channels.");
               });
                 return deferred.promise; 
+
          }
        }
      }

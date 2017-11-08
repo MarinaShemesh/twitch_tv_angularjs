@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="twitchApp">
+<head>
+  <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>Twitch TV</title>
+</head>
+<body ng-controller = "TwitchController as vm">
+<h1>Twitch TV - Angular app</h1>
+<div>
+  {{vm.message}}
+ 
+  <div ng-repeat="foo in vm.channelInfoArray[0]">
+  
+  </div>
+</div>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="scripts/app.js"></script>
+<script src="components/twitchController.js"></script>
+<script src="components/twitchFactory.js"></script>
+</body>
+</html>

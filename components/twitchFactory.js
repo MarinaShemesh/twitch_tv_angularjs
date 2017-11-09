@@ -10,7 +10,7 @@
          return {
 
            getChannelInfo: function(channel){
-             const clientID = 'get your Id from TwitchTV';
+             const clientID = '';
              const twitchURL = 'https://api.twitch.tv/kraken/streams/';
              const channelURL = twitchURL + channel + '?client_id=' + clientID;
              const deferred = $q.defer();

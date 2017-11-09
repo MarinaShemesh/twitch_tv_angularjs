@@ -10,65 +10,23 @@
   <title>Twitch TV stream</title>
 </head>
 
-<body ng-controller = "twitchController as vm" class='mainWrapt'>
+<body ng-controller = "twitchController" class='mainWrapt'>
 
 <header>
- <h1>Twitch TV - Angular app</h1>
+ <h1>Twitch TV - an AngularJS app</h1>
 </header>
 
- <div layout='row' layout-xs='column' layout-align-xs='center center' class='toolbar'>
-      <div flex='30'>
-        <h3>CHANNEL LIST</h3>
-      </div>
-      <div flex='60' style='text-align: right;'>
-        <span><em>Filter by channel status</em>&nbsp;
-         <md-input-container>
-          <md-select ng-model="filterStatus" class='filterDropdown'>
-           <md-option ng-repeat='option in vm.statusArray' 
-                          value='{{option.value}}' 
-                          ng-selected='$first'>
-              {{option.name}}
-            </md-option>
-          </md-select>
-        </md-input-container>
-      </div> 
-   </div>
+ <ui-view></ui-view>
 
-  <md-content>
-  <div class = "box" ng-repeat="channel in vm.channelInfoArray
-                                | filter: {status: filterStatus}">
-                             
-                               
-    <div flex class="offlineRow" ng-if="channel.url === undefined">
-      {{channel.name}} - {{channel.status}}
-    </div>
+  <footer>Created by <a href='https://www.linkedin.com/in/marina-shemesh-98133311/' 
+                        target='_blank'>Marina Shemesh</a></footer>
 
-    <div flex layout = 'row' class='onlineRow' ng-if='channel.url !== undefined'>     
-       <div flex='30' layout='column' layout-align='center left'>
-          <a href='{{channel.url}}' target='_blank' aria-label='{{channel.name}}'>
-            <img src='{{channel.logo}}' class='logo'>
-          </a>
-          </br>
-          <span>{{channel.status}}</span>
-               
-          <div flex='70' layout='column'>
-          <a href='{{channel.url}}' target='_blank'><h3>{{channel.name}}</h3></a>
-          <strong>{{channel.game}}:</strong> 
-          Streaming: {{channel.gameStatus}}
-          </div>
-     </div>
-   <br>
-  </div>
- </div>
-</md-content>
-
-  <footer>Created by <a href='https://www.linkedin.com/in/marina-shemesh-98133311/' target='_blank'>Marina Shemesh</a></footer>
-</div>
 
 <script src="node_modules/angular/angular.js"></script>
 <script src="node_modules/angular-animate/angular-animate.js"></script>
 <script src="node_modules/angular-aria/angular-aria.js"></script>
 <script src="node_modules/angular-material/angular-material.js"></script>
+<script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="scripts/app.js"></script>
 <script src="components/twitchController.js"></script>
 <script src="components/twitchFactory.js"></script>

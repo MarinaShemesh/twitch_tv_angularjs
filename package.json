@@ -19,6 +19,7 @@
     "angular-material": "^1.1.5",
     "angular-messages": "^1.6.6",
     "angular-ui-router": "^0.4.3",
+    "express": "^4.16.2",
     "mdi": "^2.0.46"
   }
 }

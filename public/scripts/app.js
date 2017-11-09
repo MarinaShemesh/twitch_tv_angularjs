@@ -14,7 +14,7 @@
                 $stateProvider
                   .state('home', {
                     url: '/home',
-                    templateUrl: 'components/twitch.html',
+                    templateUrl: 'templates/twitch.html',
                     controller: 'twitchController as vm'
                   })
       

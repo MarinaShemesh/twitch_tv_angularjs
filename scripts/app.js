@@ -2,21 +2,22 @@
      'use strict';
 
       angular.module('twitchApp', ['ngMaterial', 'ui.router'])
-       .config(function ($mdThemingProvider, $stateProvider, 
-                         $urlRouterProvider, $locationProvider) {
+       .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {               
+           
+              // $mdThemingProvider.theme('indigo')
+              //   .primaryPalette('indigo')
+              //   .accentPalette('pink');
 
-      $mdThemingProvider.theme('indigo')
-        .primaryPalette('indigo')
-        .accentPalette('pink');
+              $urlRouterProvider.otherwise('/home'); //default but only with hash-bang
+              $locationProvider.html5Mode(true);
 
-      $urlRouterProvider.otherwise('/twitch');
-      $stateProvider
-        .state('twitch', {
-          url: '/twitch',
-          templateUrl: 'components/twitch.html',
-          controller: 'twitchController as vm'
+                $stateProvider
+                  .state('home', {
+                    url: '/home',
+                    templateUrl: 'components/twitch.html',
+                    controller: 'twitchController as vm'
+                  })
       
-        })
-    });
+      });
 
    })();

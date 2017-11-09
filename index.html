@@ -23,8 +23,10 @@
       <div flex='60' style='text-align: right;'>
         <span><em>Filter by channel status</em>&nbsp;
          <md-input-container>
-          <md-select ng-model="filterStatus" class='filterDropdown' aria-label='select a status to filter'>
-            <md-option ng-repeat='option in vm.statusArray' value='{{option.value}}' ng-selected='$first' aria-label='{{option.name}}'>
+          <md-select ng-model="filterStatus" class='filterDropdown'>
+           <md-option ng-repeat='option in vm.statusArray' 
+                          value='{{option.value}}' 
+                          ng-selected='$first'>
               {{option.name}}
             </md-option>
           </md-select>
@@ -33,29 +35,29 @@
    </div>
 
   <md-content>
-  <div class = "box" ng-repeat="channel in vm.channelInfoArray"
-                                | filter: {status: filterStatus}
-                                | orderBy: "name": reverse>
+  <div class = "box" ng-repeat="channel in vm.channelInfoArray
+                                | filter: {status: filterStatus}">
+                             
                                
     <div flex class="offlineRow" ng-if="channel.url === undefined">
       {{channel.name}} - {{channel.status}}
     </div>
-      <div flex layout = 'row' class='onlineRow' ng-if='channel.url !== undefined'>     
-       <div flex='15' layout='column' layout-align='center left'>
+
+    <div flex layout = 'row' class='onlineRow' ng-if='channel.url !== undefined'>     
+       <div flex='30' layout='column' layout-align='center left'>
           <a href='{{channel.url}}' target='_blank' aria-label='{{channel.name}}'>
             <img src='{{channel.logo}}' class='logo'>
           </a>
           </br>
-           {{channel.status}}
+          <span>{{channel.status}}</span>
                
-       <div flex='85' layout='column'>
-        <a href='{{channel.url}}'><h3>{{channel.name}}</h3></a>
-        <strong>{{channel.game}}:</strong> 
-        Streaming: {{channel.gameStatus}}
-
-       </div>
+          <div flex='70' layout='column'>
+          <a href='{{channel.url}}' target='_blank'><h3>{{channel.name}}</h3></a>
+          <strong>{{channel.game}}:</strong> 
+          Streaming: {{channel.gameStatus}}
+          </div>
      </div>
-    <br>
+   <br>
   </div>
  </div>
 </md-content>

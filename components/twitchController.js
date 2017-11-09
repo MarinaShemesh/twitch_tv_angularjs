@@ -54,8 +54,7 @@
 
           }); //end of forEach
 
-           // vm.twitchController();
-          
+                    
         }//end of controller
  
 
